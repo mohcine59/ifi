@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout/template">
+<body>
+	<div layout:fragment="content">
+		<div class="posts">
+			<h1 class="content-subhead">Profile</h1>
+			<h1 th:text="${profile.username}"></h1>
+			<div style="float: left">
+				<img class="avatar"
+					th:src="'http://127.0.0.1:80/img/'+${profile.username}+'.jpg'" style="width:128px;height:128px;"/><br />
+				<button id="uploadButton" type="button"
+					class="pure-button pure-button-primary" style="margin-top: 5px;">Upload
+					new picture</button>
+			</div>
+			<div class="hide">
+				<form method="post" enctype="multipart/form-data"
+					action="upload-picture">
+					Upload File: <input id="file" type="file" accept="*.jpg"
+						name="file" /> <br /> <input id="sendUpload" type="submit" value="Upload" />
+				</form>
+			</div>
+			<form class="pure-form pure-form-aligned" method="post"
+				action="add-update-profile">
+				<fieldset>
+					<div class="pure-control-group">
+						<label>Username</label> <span th:text="${profile.username}"></span>
+					</div>
+					<div class="pure-control-group">
+						<label for="email">Email</label> <input id="email"
+							placeholder="Email" th:field="*{profile.email}"
+							th:value="${profile.email}" type="email" />
+					</div>
+					<div class="pure-control-group">
+						<label for="phone">Phone</label> <input id="phone"
+							placeholder="Phone" th:field="*{profile.phone}"
+							th:value="${profile.phone}" type="tel" />
+					</div>
+					<div class="pure-control-group">
+						<label for="competences">Competences</label> <input
+							id="competences" placeholder="Competences"
+							th:field="*{profile.competences}"
+							th:value="${profile.competences}" type="text" />
+					</div>
+					<div class="pure-control-group">
+						<label for="projects">Projects</label> <input id="projects"
+							placeholder="Projects" th:field="*{profile.projects}"
+							th:value="${profile.projects}" type="text" />
+					</div>
+					<div class="pure-control-group">
+						<label for="facebook"> <a
+							class="btn btn-social-icon btn-s btn-facebook"> <span
+								class="fa fa-facebook"></span>
+						</a>
+						</label> <input id="facebook" placeholder="Facebook id"
+							th:field="*{profile.facebookId}" th:value="${profile.facebookId}"
+							type="text" />
+					</div>
+
+					<div class="pure-control-group">
+						<label for="tweeter"> <a
+							class="btn btn-social-icon btn-s btn-twitter"> <span
+								class="fa fa-twitter"></span>
+						</a>
+						</label> <input id="tweeter" placeholder="Tweeter id"
+							th:field="*{profile.twitterId}" th:value="${profile.twitterId}"
+							type="text" />
+					</div>
+
+					<div class="pure-control-group">
+						<label for="linkedin"> <a
+							class="btn btn-social-icon btn-s btn-linkedin"> <span
+								class="fa fa-linkedin"></span>
+						</a>
+						</label> <input id="linkedin" placeholder="LinkedIn id"
+							th:field="*{profile.linkedinId}" th:value="${profile.linkedinId}"
+							type="text" />
+					</div>
+
+					<div class="pure-controls">
+						<button type="submit" class="pure-button pure-button-primary">Save</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div layout:fragment="addScripts">
+		<script type="text/javascript">
+			String.prototype.endsWith = function(suffix) {
+				return this.indexOf(suffix, this.length - suffix.length) !== -1;
+			};
+			function upload(){
+				var filename = $("#file").val();
+				if(filename.endsWith(".jpg")){
+					$("#sendUpload").click();
+				}
+				else{
+					alert("Accept only .jpg file !");
+				}
+			}
+			$("#file").on("change",function(){upload();});
+			$("#uploadButton").on("click",function(){$("#file").click()});
+		</script>
+	</div>
+</body>
+</html>

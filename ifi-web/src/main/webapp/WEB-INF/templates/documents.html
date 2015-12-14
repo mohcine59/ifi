@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout/template">
+	<body>
+	   <div layout:fragment="content">
+            <div class="posts">
+                <h1 class="content-subhead">Documents of : <span th:text="'#'+${username}"></span></h1>
+				<button id="uploadButton" type="button"
+					class="pure-button pure-button-primary" style="margin-top: 5px;">Upload
+					new file</button>
+					<br /><br />              
+				<table  class="table table-striped">
+					<tr>
+						<th>Nom document</th>
+						<th>uuid</th>
+						<td>Action</td>
+					</tr>
+					<tr th:each="doc : ${listDocuments}">
+						<td th:text="${doc.filename}"></td>
+						<td th:text="${doc.uuid}"></td>
+						<td><a th:href="@{'http://localhost:9191/documents/'+${doc.uuid}}" th:text="Download"></a>&nbsp;&nbsp;
+						<a th:href="@{'/document/delete/'+${doc.uuid}}" th:text="Supprimer"></a></td>
+					</tr>
+				</table>
+            </div>
+            <div class="hide">
+				<form method="post" enctype="multipart/form-data"
+					th:action="@{'/document/add'}">
+					<input id="file" type="file" name="file" /> <br /> <input id="sendFile" type="submit" value="Upload" />
+				</form>
+			</div>
+	   </div>
+	<div layout:fragment="addScripts">
+		<script type="text/javascript">
+			function upload(){
+				$("#sendFile").click();
+			}
+			$("#file").on("change",function(){upload();});
+			$("#uploadButton").on("click",function(){$("#file").click()});
+		</script>
+	</div>
+	</body>
+</html>

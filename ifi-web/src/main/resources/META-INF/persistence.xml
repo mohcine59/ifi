@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+    <persistence-unit name="entityManager" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>   
+        <class>com.ifi.entity.Profile</class>
+        <class>com.ifi.entity.Tweet</class>
+		<properties>
+			<property name="hibernate.archive.autodetection" value="class, hbm" />
+			<!-- logs SQL Hibernate-->
+			<!-- property name="hibernate.default_schema" value="${schema.nom}" /> -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="use_sql_comments" value="true" />
+			<!-- le type de SGBD géré -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
+		</properties>
+    </persistence-unit>
+</persistence>

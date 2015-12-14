@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout/template">
+	<body>
+	   <div layout:fragment="content">    
+            <div class="posts" th:fragment="lastTweets">
+                <h1 class="content-subhead">Last tweets</h1>
+                <div th:fragment="listTweets">
+                    <section class="post" th:each="tweet : ${listTweets}">
+                        <img class="post-avatar" th:alt="${tweet.username}+'\'s avatar'" th:src="'http://127.0.0.1:80/img/'+${tweet.username}+'.jpg'" height="48" width="48" />
+
+                        <div class="post-description">
+                            <p th:utext="${tweet.tweet}"></p>
+                        </div>
+
+                        <p class="post-meta">
+                            <span th:text="${tweet.elapsedTimeFormated}"></span> -
+                            By <a class="post-author" th:href="@{'/profile/'+${tweet.username}}" th:text="${tweet.username}"></a>
+                            under
+                            <a class="post-category post-category-js" th:each="tag : ${tweet.hashTags}" th:href="@{'/hashtag/'+${tag.replace('#','')}}" th:text="${tag}"></a>
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </div>
+	</body>
+</html>

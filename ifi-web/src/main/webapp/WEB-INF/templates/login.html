@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" 
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	layout:decorator="layout/template">
+	<body>
+       <script type="text/javascript" sec:authorize="isAuthenticated()">
+       		window.location.href = "${pageContext.request.contextPath}/tweet"
+        </script>
+	   <div layout:fragment="content">
+	       <h1>Login</h1>
+	       <form th:action="@{/j_spring_security_check}" method="post" class="pure-form pure-form-aligned">
+	           <fieldset>
+	               <div class="pure-control-group">
+	                   <label for="name">Username</label>
+	                   <input id="name" name="j_username" placeholder="Username" type="text" />
+	               </div>
+	
+	               <div class="pure-control-group">
+	                   <label for="password">Password</label>
+	                   <input id="password" name="j_password" placeholder="Password" type="password" />
+	               </div>
+	
+	               <div class="pure-controls">
+	                   <button type="submit" class="pure-button pure-button-primary">Login</button>
+	               </div>
+	
+	               <div class="pure-controls">
+	                   <a class="btn btn-social btn-facebook">
+	                       <span class="fa fa-facebook"></span> Sign in with Facebook
+	                   </a>
+	               </div>
+	               <div class="pure-controls">
+	                   <a class="btn btn-social btn-twitter">
+	                       <span class="fa fa-twitter"></span> Sign in with Twitter
+	                   </a>
+	               </div>
+	               <div class="pure-controls">
+	                   <a class="btn btn-social btn-google">
+	                       <span class="fa fa-google"></span> Sign in with Google
+	                   </a>
+	               </div>
+	           </fieldset>
+	       </form>
+	   </div>
+	</body>
+</html>

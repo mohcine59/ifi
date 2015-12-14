@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="head :: head"></head>
+<body>
+	<footer th:fragment="footer" class="footer">
+		<script th:fragment="scripts" th:src="@{'/resources/js/jquery.js'}"></script>
+		<script th:fragment="scripts" th:src="@{'/resources/js/bootstrap.js'}"></script>
+		<script th:fragment="scripts" th:src="@{'/resources/js/stomp.js'}"></script>
+		<script type="text/javascript">
+			var client = Stomp
+					.client("ws://localhost:61616", "v11.stomp");
+			client.connect("", "", function() {
+				client.subscribe("jms.topic.tweet", function(message) {
+					alert(message);
+				}, {
+					priority : 9
+				});
+
+				client.send("jms.topic.tweet", {
+					priority : 9
+				}, "Pub/Sub over STOMP!");
+			});
+		</script>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:include="layout/head :: head">
+</head>
+<body>
+	<div th:substituteby="layout/navbar :: navbar"></div>
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+			<section layout:fragment="content">
+			</section>
+			<section layout:fragment="additionalContent">
+			</section>
+		</div>
+	</div>
+	<div th:substituteby="layout/footer :: footer"></div>
+	<section layout:fragment="addScripts"></section>
+</body>
+</html>

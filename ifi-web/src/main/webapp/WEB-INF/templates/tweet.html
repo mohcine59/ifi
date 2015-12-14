@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout/template">
+	<body>
+	   <div layout:fragment="content">
+            <h1>Welcome <span th:text="${currentUser}"></span>!</h1>
+
+            <p>Say someting about you : </p>
+
+            <form class="pure-form pure-form-stacked" action="add-tweet" method="post">
+                <textarea class="form-control" rows="3" name="tweet"></textarea>
+                <button type="submit" class="pure-button pure-button-primary">Say it!</button>
+
+                Say it on :
+                <button class="btn btn-social-icon btn-s btn-facebook" disabled="disabled">
+                    <span class="fa fa-facebook"></span>
+                </button>
+                <button class="btn btn-social-icon btn-s btn-twitter">
+                    <span class="fa fa-twitter"></span>
+                </button>
+                <button class="btn btn-social-icon btn-s btn-linkedin" disabled="disabled">
+                    <span class="fa fa-linkedin"></span>
+                </button>
+            </form>
+      </div>
+	   <div layout:fragment="additionalContent">
+	   	   <div th:substituteby="home :: lastTweets"></div>
+	   </div>
+	</body>
+</html>

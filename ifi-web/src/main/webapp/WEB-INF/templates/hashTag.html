@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout/template">
+	<body>
+	   <div layout:fragment="content">
+            <div class="posts">
+                <h1 class="content-subhead">Hashtag : <span th:text="'#'+${currentHashtag}"></span></h1>
+				<div th:substituteby="home :: listTweets"></div>
+            </div>
+	   </div>
+	</body>
+</html>

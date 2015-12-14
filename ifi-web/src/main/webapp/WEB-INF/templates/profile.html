@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout/template">
+<body>
+	<div layout:fragment="content">
+
+		<div class="posts">
+			<h1 class="content-subhead">Profile</h1>
+			<h1 th:text="${profile.username}"></h1>
+			<img class="avatar" th:src="'http://127.0.0.1:80/img/'+${profile.username}+'.jpg'" width="128" heigh="128"/>
+
+			<form class="pure-form pure-form-aligned">
+				<fieldset>
+					<div class="pure-control-group">
+						<label>Username</label> <span th:text="${profile.username}"></span>
+					</div>
+					<div class="pure-control-group">
+						<label>Email</label> <span th:text="${profile.email}"></span>
+					</div>
+					<div class="pure-control-group">
+						<label>Phone</label> <span th:text="${profile.phone}"></span>
+					</div>
+					<div class="pure-control-group">
+						<label>Projects</label> <span th:text="${profile.projects}"></span>
+					</div>
+					<div class="pure-control-group">
+						<label>Competences</label> <span th:text="${profile.competences}"></span>
+					</div>
+					<div class="pure-control-group">
+						<label>Facebook</label> <a class="btn btn-social-icon btn-twitter"
+							href="https://twitter.com/darthvader"> <span
+							class="fa fa-twitter"></span>
+						</a>
+					</div>
+					<div class="pure-control-group">
+						<label>Twitter</label> <a class="btn btn-social-icon btn-twitter"
+							href="https://twitter.com/darthvader"> <span
+							class="fa fa-twitter"></span>
+						</a>
+					</div>
+					<div class="pure-control-group">
+						<label>LinkedIn</label> <a class="btn btn-social-icon btn-twitter"
+							href="https://twitter.com/darthvader"> <span
+							class="fa fa-twitter"></span>
+						</a>
+					</div>
+				</fieldset>
+			</form>
+
+		</div>
+		<div th:substituteby="home :: lastTweets"></div>
+	</div>
+</body>
+</html>

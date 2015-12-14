@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="head :: head"></head>
+<body>	
+    <div th:fragment="navbar" class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <h1 class="brand-title"><a href="home">Star Wars Network</a></h1>
+            <h2 class="brand-tagline">A far far away software</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                		<li class="nav-item" sec:authorize="isAuthenticated()">
+							<a class="pure-button" th:href="@{'/my-profile'}">Edit my profile</a>                    
+	                    </li>
+	                    <li class="nav-item" sec:authorize="isAuthenticated()">
+							<a class="pure-button" th:href="@{'/documents'}">Manage documents</a>                    
+	                    </li>
+	                    <li class="nav-item" sec:authorize="isAuthenticated()">
+							<a class="pure-button" th:href="@{'/logout'}">Logout</a>                    
+	                    </li>
+	                    <li class="nav-item" sec:authorize="isAnonymous()">
+							<a class="pure-button" th:href="@{'/login'}">Login</a>                    
+	                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</body>
+</html>
