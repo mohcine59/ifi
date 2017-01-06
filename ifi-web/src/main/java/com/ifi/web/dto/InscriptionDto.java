@@ -1,82 +1,51 @@
-package com.ifi.entity;
+package com.ifi.web.dto;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import com.ifi.web.dto.ProfileDto;
-
-@Entity
-@Table(name = "profil")
-public class Profile implements Serializable {
+public class InscriptionDto implements Serializable {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 2327635312463701785L;
+	private static final long serialVersionUID = 2287173440030724717L;
 
-	@Id
-	@Column(name = "username", nullable = false)
 	private String username;
+	
+	private String password;
 
-	@Column(name = "email", nullable = true)
 	private String email;
 
-	@Column(name = "phone", nullable = true)
 	private String phone;
 
-	@Column(name = "competences", nullable = true)
 	private String competences;
 
-	@Column(name = "projects", nullable = true)
 	private String projects;
 
-	@Column(name = "twitterId", nullable = true)
 	private String twitterId;
 
-	@Column(name = "facebookId", nullable = true)
 	private String facebookId;
 
-	@Column(name = "linkedinId", nullable = true)
 	private String linkedinId;
 
-	@Column(name = "picture", nullable = true)
-	private String picture;
-	
-	@OneToOne(mappedBy="profil")
-	private User user;
+	public String picture;
 
-	public Profile() {
+	public InscriptionDto() {
 		super();
 	}
 
-	public Profile(final String username) {
-		this();
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+	public InscriptionDto(final String username) {
 		this.username = username;
-	}
-
-	public Profile(final ProfileDto profilDto) {
-		this();
-		this.username = profilDto.getUsername();
-		this.email = profilDto.getEmail();
-		this.phone = profilDto.getPhone();
-		this.competences = profilDto.getCompetences();
-		this.projects = profilDto.getProjects();
-		this.facebookId = profilDto.getFacebookId();
-		this.twitterId = profilDto.getTwitterId();
-		this.linkedinId = profilDto.getLinkedinId();
-		this.picture = profilDto.getLinkedinId();
-	}
-
-	public Profile(final String email, final String phone, final String competences) {
-		this();
-		this.email = email;
-		this.phone = phone;
-		this.competences = competences;
 	}
 
 	public String getUsername() {

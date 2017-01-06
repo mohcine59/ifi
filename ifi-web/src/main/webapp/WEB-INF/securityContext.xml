@@ -22,11 +22,11 @@
         	always-use-default-target="true" 
         	authentication-failure-url="/login?authFailure=true" 
         	login-processing-url="/j_spring_security_check" />
-        <intercept-url pattern="/my-profil" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/tweet" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/documents" access="hasRole('ROLE_USER')" />
-        <intercept-url pattern="/login" access="hasAnyRole('ROLE_ANONYMOUS','ROLE_USER')"/>
-        <intercept-url pattern="/home" access="hasAnyRole('ROLE_ANONYMOUS','ROLE_USER')"/>
+        <intercept-url pattern="/my-profil" access="hasRole('MEMBRE')" />
+		<intercept-url pattern="/tweet" access="hasRole('MEMBRE')" />
+		<intercept-url pattern="/documents" access="hasRole('MEMBRE')" />
+        <intercept-url pattern="/login" access="hasAnyRole('ROLE_ANONYMOUS','MEMBRE')"/>
+        <intercept-url pattern="/home" access="hasAnyRole('ROLE_ANONYMOUS','MEMBRE')"/>
         <csrf disabled="true"/>
         <logout logout-success-url="/home" logout-url="/logout" />
     </http>

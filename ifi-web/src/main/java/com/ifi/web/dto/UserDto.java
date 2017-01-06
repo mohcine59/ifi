@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserJson implements Serializable {
+public class UserDto implements Serializable {
 
 	private static final long serialVersionUID = -457758713333058716L;
 
@@ -14,18 +14,18 @@ public class UserJson implements Serializable {
 	private String userName;
 	private String password;
 
-	public UserJson() {
+	public UserDto() {
 		super();
 	}
 
-	public UserJson(final String userName, final String password) {
+	public UserDto(final String userName, final String password) {
 		this.userName = userName;
 		this.password = password;
 		this.nom = "";
 		this.prenom = "";
 	}
 
-	public UserJson(final String userName, final String nom, final String prenom) {
+	public UserDto(final String userName, final String nom, final String prenom) {
 		this.userName = userName;
 		this.nom = nom;
 		this.prenom = prenom;

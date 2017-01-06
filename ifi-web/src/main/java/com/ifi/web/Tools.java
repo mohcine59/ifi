@@ -18,7 +18,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.ifi.web.dto.TweetDto;
-import com.ifi.web.dto.UserJson;
+import com.ifi.web.dto.UserDto;
 
 public class Tools {
 
@@ -55,13 +55,13 @@ public class Tools {
 			final HttpEntity<Object> entity = new HttpEntity<Object>("", headers);
 
 			final String url = "http://localhost:9090/employee";
-			final ResponseEntity<UserJson[]> response = restTemplate.exchange(url, HttpMethod.GET, entity,
-					UserJson[].class);
+			final ResponseEntity<UserDto[]> response = restTemplate.exchange(url, HttpMethod.GET, entity,
+					UserDto[].class);
 
-			final UserJson[] tabUser = response.getBody();
+			final UserDto[] tabUser = response.getBody();
 			if ((tabUser != null) && (tabUser.length > 0)) {
 				final List<String> listUsername = new ArrayList<>(tabUser.length);
-				for (final UserJson userJson : tabUser) {
+				for (final UserDto userJson : tabUser) {
 					listUsername.add(userJson.getUserName().toLowerCase());
 				}
 
@@ -85,7 +85,7 @@ public class Tools {
 		final HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 
-		final HttpEntity<Object> entity = new HttpEntity<Object>(new UserJson(username, password), headers);
+		final HttpEntity<Object> entity = new HttpEntity<Object>(new UserDto(username, password), headers);
 
 		final ResponseEntity<String> out = restTemplate.exchange("http://localhost:9090/session", HttpMethod.POST,
 				entity, String.class);

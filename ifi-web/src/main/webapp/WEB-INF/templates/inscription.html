@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" 
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	layout:decorator="layout/template">
+	<body>
+       <script type="text/javascript" sec:authorize="isAuthenticated()">
+       		window.location.href = "${pageContext.request.contextPath}/tweet"
+        </script>
+	   <div layout:fragment="content">
+	       <h1>Login</h1>
+	       <form th:action="@{addUser}" method="post" class="pure-form pure-form-aligned">
+	          
+	       </form>
+	   </div>
+	</body>
+</html>
