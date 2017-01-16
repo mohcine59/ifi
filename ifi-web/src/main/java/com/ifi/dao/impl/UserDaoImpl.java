@@ -15,7 +15,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao {
 	 * Le contexte de persistance permettant l'accès aux données
 	 */
 	@PersistenceContext(unitName = "entityManager")
-	EntityManager em;
+	private EntityManager em;
 
 	@Override
 	public User getUser(String username) {

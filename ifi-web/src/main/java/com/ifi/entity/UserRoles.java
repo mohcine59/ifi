@@ -60,5 +60,9 @@ public class UserRoles implements Serializable {
 		this.roleName = roleName;
 	}
 	
+	public boolean isRole(String role){
+		return role.equals(this.roleName);
+	}
+	
 	
 }

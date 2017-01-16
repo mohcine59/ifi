@@ -9,6 +9,8 @@ public class InscriptionDto implements Serializable {
 	 */
 	private static final long serialVersionUID = 2287173440030724717L;
 
+	private Long id;
+	
 	private String username;
 	
 	private String password;
@@ -32,6 +34,19 @@ public class InscriptionDto implements Serializable {
 	public InscriptionDto() {
 		super();
 	}
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
 
 	public String getPassword() {
 		return password;

@@ -33,7 +33,7 @@ public class AuthenticateService implements AuthenticationProvider {
 			final UserDto userDto = this.userService.login(login, pwd);
 			if (userDto != null) {
 				final List<GrantedAuthority> grantedAuths = new ArrayList<>();
-				grantedAuths.add(new SimpleGrantedAuthority("MEMBRE"));
+				grantedAuths.add(new SimpleGrantedAuthority("ROLE_MEMBRE"));
 				final Authentication auth = new UsernamePasswordAuthenticationToken(login, pwd, grantedAuths);
 
 				return auth;

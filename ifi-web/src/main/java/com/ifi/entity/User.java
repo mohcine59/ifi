@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -22,6 +24,7 @@ public class User implements Serializable{
 	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	@Id
+	@Column(name = "username", nullable = false)
 	private String username;
 	
     private String password;

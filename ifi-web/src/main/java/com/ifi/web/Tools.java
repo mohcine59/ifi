@@ -62,7 +62,7 @@ public class Tools {
 			if ((tabUser != null) && (tabUser.length > 0)) {
 				final List<String> listUsername = new ArrayList<>(tabUser.length);
 				for (final UserDto userJson : tabUser) {
-					listUsername.add(userJson.getUserName().toLowerCase());
+					listUsername.add(userJson.getUsername().toLowerCase());
 				}
 
 				return listUsername;

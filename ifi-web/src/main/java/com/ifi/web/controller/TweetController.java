@@ -24,7 +24,8 @@ public class TweetController {
 
 	@RequestMapping(value = "/tweet", method = RequestMethod.GET)
 	public String getLastTweets(final Model model, final Principal principal) {
-
+		System.out.println("principal");
+		System.out.println(principal.getName());
 		final List<TweetDto> lastTweets = this.tweetService.getLastTweets();
 		Tools.replaceUserWithHTML(lastTweets);
 		model.addAttribute("currentUser", principal.getName());
